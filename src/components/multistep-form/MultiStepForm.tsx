@@ -33,7 +33,6 @@ const MultiStepForm = () => {
 
   async function onSubmit(values: any) {
     // Creating FormData object
-    alert(JSON.stringify(values));
     setStep(3);
     const formData = new FormData();
     formData.append('name', values.name);
@@ -62,7 +61,6 @@ const MultiStepForm = () => {
         console.log('Form submitted successfully');
         setStep(4);
       } else {
-        alert('hi i am not fine fine');
         console.error('Form submission failed');
       }
     } catch (error) {
