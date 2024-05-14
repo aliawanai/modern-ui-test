@@ -48,5 +48,5 @@ export function handleErrorResponse(error: Error): NextResponse {
       return new NextResponse(message, { status });
     }
   }
-  return new NextResponse("Internal Server Error", { status: 500 });
+  return new NextResponse(`${error.message}Internal Server Error`, { status: 500 });
 }

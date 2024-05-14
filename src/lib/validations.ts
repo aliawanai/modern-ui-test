@@ -14,7 +14,7 @@ export const userDetailsSchema = z.object({
 export interface IUser extends z.infer<typeof userDetailsSchema> {}
 export const profileInfoSchema = z.object({
   bio: z.string().min(10,'Bio must have at least 10 characters ').max(50, 'Bio cannot exceed 50 characters'),
-  // profile_picture: z.any().optional(),
+  profile_picture: z.any().optional(),
 });
 export interface IProfile extends z.infer<typeof profileInfoSchema> {}
 

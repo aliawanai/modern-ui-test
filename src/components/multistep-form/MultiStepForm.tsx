@@ -24,7 +24,7 @@ const MultiStepForm = () => {
       email: user.email,
       password: user.password,
       bio: profile.bio,
-      // profile_picture: profile.profile_picture,
+      profile_picture: profile.profile_picture,
       notification: preference.notification,
       privacy: preference.privacy,
     },
@@ -40,7 +40,12 @@ const MultiStepForm = () => {
     formData.append('email', values.email);
     formData.append('password', values.password);
     formData.append('bio', values.bio);
-    // formData.append('profile_picture', values.profile_picture[0]); // Assuming profile_picture is a File
+    // formData.append('profile_picture', values.profile_picture[0]); 
+    // Assuming
+    // profile_picture is a File
+    if (values.profile_picture && values.profile_picture[0]) {
+      formData.append('profile_picture', values.profile_picture[0]);
+    }
     formData.append('notification', values.notification.toString());
     formData.append('privacy', values.privacy.toString());
 
@@ -57,7 +62,7 @@ const MultiStepForm = () => {
         console.log('Form submitted successfully');
         setStep(4);
       } else {
-        alert('hi i am fine');
+        alert('hi i am not fine fine');
         console.error('Form submission failed');
       }
     } catch (error) {

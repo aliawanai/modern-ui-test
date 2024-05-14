@@ -36,7 +36,7 @@ const ProfileInfo = ({ form }: { form: any }) => {
             />
 
           </div>
-          {/* <div className="grid gap-2">
+          <div className="grid gap-2">
           <FormField
               control={form.control}
               name="profile_picture"
@@ -47,6 +47,7 @@ const ProfileInfo = ({ form }: { form: any }) => {
                     <Input
                       {...field}
                       value={undefined}
+                      onChange={(e) => field.onChange(e.target.files)}
                       type='file'
                       className="min-h-8 max-h-16"
                     />
@@ -55,7 +56,7 @@ const ProfileInfo = ({ form }: { form: any }) => {
                 </FormItem>
               )}
             />
-          </div> */}
+          </div>
         </div>
       </CardContent>
     </Card>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui/card'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 const Feedback = ({data}:{data:any}) => {
   return (
@@ -12,15 +13,14 @@ const Feedback = ({data}:{data:any}) => {
     </CardHeader>
     <CardContent>
       <div className="grid gap-4">
-      {/* {data.data.map((item:any)=> {
-        <div className="grid gap-2">
-          {item}
-        </div>
-      })} */}
+      <Avatar>
+            <AvatarImage src={`${data.data.profile_picture}`} />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
       {Object.entries(data.data).map(([key, value]:any) => (
-        <p key={key}>
+        key == "profile_picture"? "" : (<p key={key}>
           <strong>{key}:</strong> {value.toString()}
-        </p>
+        </p>)
       ))}
       {/* {JSON.stringify(data)} */}
       </div>

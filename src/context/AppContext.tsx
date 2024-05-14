@@ -21,14 +21,14 @@ export const AppContext = createContext<AppContextProps | undefined>(undefined);
 export function AppWrapper({ children }: { children: ReactNode }) {
     const [step, setStep] = useState<number>(0);
     const [user, setUser] = useState<IUser>({ name: "", email: "", password: "" });
-    const [profile, setProfile] = useState<IProfile>({ bio: ""});
+    const [profile, setProfile] = useState<IProfile>({ bio: "", profile_picture: '' });
     const [preference, setPreference] = useState<IPreferences>({ notification: true, privacy: false });
     const [data, setData]= useState<any>(null)
     const resetForm = () => {
         setStep(0);
         setData(null);
         setUser({ name: "", email: "", password: "" });
-        setProfile({ bio: ""});
+        setProfile({ bio: "", profile_picture: '' });
         setPreference({ notification: true, privacy: false });
     };
 
