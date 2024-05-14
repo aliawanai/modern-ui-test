@@ -36,10 +36,26 @@ const ProfileInfo = ({ form }: { form: any }) => {
             />
 
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="profile">Profile picture</Label>
-            <Input id="profile" type="file" />
-          </div>
+          {/* <div className="grid gap-2">
+          <FormField
+              control={form.control}
+              name="profile_picture"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profile</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      value={undefined}
+                      type='file'
+                      className="min-h-8 max-h-16"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div> */}
         </div>
       </CardContent>
     </Card>
