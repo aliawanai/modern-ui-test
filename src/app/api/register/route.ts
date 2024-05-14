@@ -7,7 +7,11 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcryptjs'
 import { writeFile } from 'fs/promises'
 import path from "path";
+import fs from 'fs';
+import { pipeline } from 'stream';
+import { promisify } from 'util';
 export async function POST(request: NextRequest) {
+  const pump = promisify(pipeline);
   try {
     const formData = await request.formData();
     let notification:any = formData.get('notification')? formData.get('notification') : '';
@@ -25,7 +29,7 @@ export async function POST(request: NextRequest) {
     }
     const response = FormDataSchema.safeParse(data);
     const image:any = formData.get('profile_picture');
-
+    const file:any = formData.getAll('profile_picture')[0];
     if (!image) {
     //     If no file is received, return a JSON response with an error and a 400 status code
         return NextResponse.json({ error: "No Image received." }, { status: 400 });
@@ -36,16 +40,17 @@ export async function POST(request: NextRequest) {
       }
 
       // Convert the file data to a Buffer
-      const buffer = Buffer.from(await image.arrayBuffer());
+      // const buffer = Buffer.from(await image.arrayBuffer());
     
       // Replace spaces in the file name with underscores
       const filename = `${Date.now()}-${image.name.replaceAll(" ", `_`)}`;
-      const filepath = `public/uploads/${filename}`;
+      const filepath = `./public/uploads/${filename}`;
       const viewpath = `/uploads/${filename}`;
-      await writeFile(
-        path.join(process.cwd(), filepath),
-        buffer
-      );
+      await pump(file.stream(), fs.createWriteStream(filepath));
+      // await writeFile(
+        // path.join(process.cwd(), filepath),
+        // buffer
+      // );
 
     //   encrypt it using bcryptjs and do not return it back to client. Comment for modern ui client
       data.password = "";
