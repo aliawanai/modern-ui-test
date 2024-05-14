@@ -25,6 +25,8 @@ export const FormDataSchema = z.object({
 
       return true;
     }, 'Profile picture must be a PNG or JPG image and not exceed 1MB'),
-  notification: z.boolean().optional(), // Assuming it's optional
-  privacy: z.boolean().refine((val) => val === true, 'You must except privacy policy'),
+  notification: z.enum(['true' ,'false']).optional(), // Assuming it's optional
+  privacy: z.enum(['true' ,'false']).refine((val) => val === 'true', 'You must except privacy policy'),
 });
+
+export interface IFormData extends z.infer<typeof FormDataSchema> {}
