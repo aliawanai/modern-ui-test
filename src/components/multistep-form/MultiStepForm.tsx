@@ -23,8 +23,8 @@ const MultiStepForm = () => {
       password: "",
       bio: "",
       profile_picture: null,
-      notification: true,
-      privacy: false
+      notification: 'true',
+      privacy: 'false'
     },
     mode: 'all',
   });
