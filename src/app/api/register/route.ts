@@ -44,9 +44,9 @@ export async function POST(request: NextRequest) {
     
       // Replace spaces in the file name with underscores
       const filename = `${Date.now()}-${image.name.replaceAll(" ", `_`)}`;
-      const filepath = `./public/uploads/${filename}`;
-      const viewpath = `/uploads/${filename}`;
-      // await pump(file.stream(), fs.createWriteStream(filepath));
+      const filepath = `./public/${filename}`;
+      const viewpath = `/${filename}`;
+      await pump(file.stream(), fs.createWriteStream(filepath));
       // await writeFile(
         // path.join(process.cwd(), filepath),
         // buffer
