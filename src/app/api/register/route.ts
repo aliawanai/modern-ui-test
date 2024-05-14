@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       const filename = `${Date.now()}-${image.name.replaceAll(" ", `_`)}`;
       const filepath = `./public/${filename}`;
       const viewpath = `/${filename}`;
-      await pump(file.stream(), fs.createWriteStream(filepath));
+      // await pump(file.stream(), fs.createWriteStream(filepath));
       // await writeFile(
         // path.join(process.cwd(), filepath),
         // buffer
